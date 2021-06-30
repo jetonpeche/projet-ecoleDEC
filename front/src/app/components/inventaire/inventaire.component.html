@@ -1,0 +1,24 @@
+<div class="container-fluid">
+      
+    <p *ngIf="BonusActif()">Bonus actif: {{ bonusActuelle.nomItem | titlecase }}</p>
+
+    <div class="row">
+        <mat-card *ngFor="let element of inventaire" class="col-lg-4 col-md-12 col-xs-12 widht-card">
+            <mat-card-header>
+                <mat-card-title>{{ element.nomItem }}</mat-card-title>
+                
+            </mat-card-header>
+            <img mat-card-image src="../../assets/imgBonus/{{ element.iconeItem }}" alt="logo du bonus">
+            <mat-card-content>
+                <p>{{ element.descriptionItem }}</p>
+
+                <p>Quantité: {{ element.qte }}</p>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button mat-raised-button color="primary" [disabled]="idBonusActif == element.idItem" (click)="UiliserProchainePartie(element.idItem, element)">Utiliser</button>
+                <button mat-button color="warn" [disabled]="idBonusActif != element.idItem" (click)="SuppBonusProchainePartie(element.idItem, element)">Ne plus utiliser</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

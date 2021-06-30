@@ -1,0 +1,40 @@
+  <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item *ngIf="!EstConnecter()" (click)="OuvrirModalConnexion()">Connexion</a>
+      <a mat-list-item *ngIf="!EstConnecter()" (click)="OuvrirModalInscription()">Inscription</a>
+      
+      <a mat-list-item routerLink="/boutique" routerLinkActive="active">Boutique</a>
+      <a mat-list-item routerLink="/panier" routerLinkActive="active">Panier</a>
+
+      <a mat-list-item *ngIf="EstConnecter()" routerLink="/inventaire" routerLinkActive="active">Inventaire</a>
+      <a mat-list-item routerLink="/tableau-score" routerLinkActive="active">Tableau des scores</a>
+
+      <a mat-list-item *ngIf="EstConnecter()"routerLink="/historique-achat" routerLinkActive="active">historique achat</a>
+      
+      <a mat-list-item routerLink="/jeu">Jouer</a>
+      
+      <a mat-list-item *ngIf="EstConnecter()" (click)="Deconnexion()">Deconnexion</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Bonjour {{ AfficherPseudo() }}</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

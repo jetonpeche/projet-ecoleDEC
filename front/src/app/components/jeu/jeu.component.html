@@ -1,0 +1,9 @@
+<div>
+    <button mat-raised-button color="accent" [disabled]="!PartieReprise()" (click)="ReprendrePartie()">Reprendre</button>&nbsp;
+    <button *ngIf="EstConnecter()" mat-raised-button color="primary" (click)="Jouer()">Jouer</button>
+    <button *ngIf="!EstConnecter()" mat-raised-button color="primary" (click)="JouerPasConnecter()">Jouer</button>
+</div>
+
+
+
+

@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <br>
+    <h2>Historique des achats</h2>
+    <br>
+
+    <mat-card *ngFor="let element of listeHistorique; let i = index">
+        <p>Commade: {{ i + 1 }}</p>
+
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Liste des bonus achetés le: {{ element.dateAchat | date:'dd/MM/yyyy' }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Total de la commande: {{ CalculTotalCommande(element.listeItem) }} $
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prix / unité</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let element2 of element.listeItem">
+                            <th scope="row">{{ element2.nomItem }}</th>
+                            <td>{{ element2.prixItem }} $</td>
+                            <td>{{ element2.qte }}</td>
+
+                            <td>{{ CalculPrixTotal(element2.prixItem, element2.qte) }} $</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card>
+</div>

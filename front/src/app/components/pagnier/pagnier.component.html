@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <h2>Liste de votre panier</h2>
+
+    <div id="msgPagnierVide" *ngIf="PagnierVide()">
+      <p>Votre panier est vide. Visiter notre boutique pour le remplir !</p>
+    </div>
+
+    <mat-card *ngFor="let element of pagnier">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Prix/unité</th>
+                <th scope="col">PrixTotal</th>
+                <th scope="col">Supprimer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">{{ element.nomItem }}</th>
+                <td>{{ element.qteChoisi }}</td>
+                <td>{{ element.prixItem }} $</td>
+                <td>{{ CalculPrixTotal(element.prixItem, element.qteChoisi) }} $</td>
+                <td>
+                  <button mat-fab color="warn" (click)="SupprimerElementPagnier(element.idItem)">
+                      <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </mat-card>
+
+    <button mat-raised-button *ngIf="!PagnierVide()" (click)="Payer()" color="primary">Payer</button>
+</div>

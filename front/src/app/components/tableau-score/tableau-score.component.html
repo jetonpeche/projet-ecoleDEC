@@ -1,0 +1,27 @@
+<div class="container">
+
+    <br>
+    <h2>Liste des meilleurs scores</h2>
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Rang</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Victoires</th>
+                <th scope="col">Défaites</th>
+                <th scope="col">Parties jouées</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let element of listeScore; let i = index; let premier = first" [ngClass]="{ 'bg-warning': premier }">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ element.pseudoUtilisateur }}</td>
+                <td>{{ element.nbVictoire }}</td>
+                <td>{{ element.nbDefaite }}</td>
+                <td>{{ element.totalPartie }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

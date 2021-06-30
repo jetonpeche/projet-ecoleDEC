@@ -1,0 +1,18 @@
+mat-card
+{
+    margin-bottom: 10px;
+}
+
+#msgPagnierVide
+{
+    position: absolute; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+}
+
+#msgPagnierVide p
+{
+    font-size: 1em;
+    color: rgb(175, 175, 175);
+}

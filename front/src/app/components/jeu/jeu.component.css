@@ -1,0 +1,14 @@
+div
+{
+    position: absolute; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+}
+
+div button
+{
+    width: 330px;
+    height: 150px;
+    font-size: 4em;
+}

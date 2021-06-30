@@ -1,0 +1,113 @@
+<h2 mat-dialog-title>S'inscrire</h2>
+
+<mat-dialog-content>
+
+    <form #e="ngForm" id='formulaire' class="container-fluid">
+
+        <div class="row">
+    
+            <!-- nom -->
+            <div class="col">
+                <mat-form-field appearance="outline" class="max_width">
+                <mat-label>Nom</mat-label>
+                <input matInput name="nom" type="text" placeholder="nom" maxlength="50" ngModel required>
+                </mat-form-field>
+            </div>
+    
+            <!-- prenom -->
+            <div class="col">
+                <mat-form-field appearance="outline" class="max_width">
+                <mat-label>Prénom</mat-label>
+                <input matInput name="prenom" type="text" placeholder="prenom" maxlength="50" ngModel required>
+                </mat-form-field>
+            </div>
+
+            <!-- date naissance -->
+            <div class="col">
+                <mat-form-field appearance="outline" class="max_width">
+                    <mat-label>Date de naissance</mat-label>
+                    <input #date matInput name="dateNaissance" [matDatepicker]="picker" ngModel required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- mail -->
+            <div class="col">
+                <mat-form-field appearance="outline" class="max_width">
+                    <mat-label>Mail</mat-label>
+                    <input matInput name="mail" type="email" placeholder="adresse mail" maxlength="150" ngModel required>
+                </mat-form-field>
+            </div>
+
+            <!-- adresse -->
+            <div class="col">
+                <mat-form-field appearance="outline" class="max_width">
+                    <mat-label>Adresse</mat-label>
+                    <input matInput name="adresse" type="text" placeholder="adresse" maxlength="100" ngModel required>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- speudo -->
+            <div class="col">
+                <mat-form-field appearance="outline" class="max_width">
+                    <mat-label>Pseudo</mat-label>
+                    <input #speudo matInput name="pseudo" type="text" placeholder="pseudo" maxlength="30" ngModel required>
+                    <mat-hint align="end">{{ speudo.value.length }} / 20</mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- mdp -->
+            <div class="col">
+                <mat-form-field appearance="outline" class="max_width">
+                    <mat-label>Entrer votre mot de passe</mat-label>
+                    <input #mdp matInput [type]="cache ? 'password' : 'text'" required>
+                    <button mat-icon-button matSuffix (click)="cache = !cache">
+                        <mat-icon>{{ cache ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+
+                    <mat-hint *ngIf="mdp.value != mdpConf.value">
+                        <mat-error>
+                            Les deux mots de passe ne sont pas identique
+                        </mat-error>
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+            
+        <div class="row">
+
+            <!-- confirmation mdp -->
+            <div class="col">
+                <mat-form-field appearance="outline" class="max_width">
+                    <mat-label>Entrer votre mot de passe</mat-label>
+                    <input #mdpConf matInput name="mdp" [type]="cache ? 'password' : 'text'" ngModel required>
+                    <button mat-icon-button matSuffix (click)="cache = !cache">
+                        <mat-icon>{{ cache2 ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+
+                    <mat-hint *ngIf="mdp.value != mdpConf.value">
+                        <mat-error>
+                            Les deux mots de passe ne sont pas identique
+                        </mat-error>
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" (click)="Incription(e)" [disabled]="e.invalid || mdp.value != mdpConf.value">S'inscrire</button>&nbsp;
+        <button mat-button mat-dialog-close color="warn">Fermer</button>
+</mat-dialog-actions>

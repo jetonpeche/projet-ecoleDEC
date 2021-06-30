@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <div class="row">
+        <mat-card *ngFor="let element of listeItem" class="widht-card">
+            <mat-card-header>
+                <mat-card-title>{{ element.nomItem }}</mat-card-title>             
+            </mat-card-header>
+            <img mat-card-image src="../../assets/imgBonus/{{ element.iconeItem }}" alt="logo du bonus">
+            <mat-card-content>
+                <p>{{ element.descriptionItem }}</p>
+
+                <p>Prix: {{ element.prixItem }} $</p>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <div class="row">
+                    <div class="col">
+                        <button mat-raised-button #btn color="primary" (click)="AjouterPagnier(inputQte.value, element)">Ajouter au pagnier</button>
+                    </div>
+                    <div class="col">
+                        <input #inputQte type="number" name="qte" class="form-control" placeholder="quantité souhaité" min="0">
+                    </div>
+                </div>
+            </mat-card-actions>
+        </mat-card>  
+    </div>
+</div>
+
+
+
